@@ -3,6 +3,7 @@
 #pragma once
 
 #define EE_HANDS
+#define PERMISSIVE_HOLD
 
 #ifdef POINTING_DEVICE_ENABLE
 #    define POINTING_DEVICE_SCLK_PIN D0
