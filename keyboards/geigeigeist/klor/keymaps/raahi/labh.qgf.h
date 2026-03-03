@@ -11,4 +11,4 @@
 #include <qp.h>
 
 extern const uint32_t gfx_labh_length;
-extern const uint8_t  gfx_labh[101];
+extern const uint8_t  gfx_labh[486];
