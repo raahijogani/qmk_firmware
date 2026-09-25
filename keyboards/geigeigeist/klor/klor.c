@@ -2,6 +2,31 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include "quantum.h"
 
+#ifdef RGB_MATRIX_ENABLE
+// KLOR's 42-LED electrical order (21 LEDs per half), matching the stock
+// KLOR configuration and the physical Polydactyl/Yubitsume layout.
+led_config_t g_led_config = { {
+    { NO_LED, 18, 13, 12,  6,  5 },
+    { 19,      17, 14, 11,  7,  4 },
+    { 20,      16, 15, 10,  8,  3 },
+    { NO_LED,  9,  2,  1,  0, NO_LED },
+    { NO_LED, 37, 34, 33, 27, 26 },
+    { 40,      38, 35, 32, 28, 25 },
+    { 41,      39, 36, 31, 29, 24 },
+    { NO_LED, 30, 23, 22, 21, NO_LED }
+}, {
+    { 102, 63 }, { 89, 54 }, { 74, 49 }, { 75, 34 }, { 75, 21 }, { 75, 8 }, { 60, 6 },
+    { 60, 19 }, { 60, 32 }, { 58, 48 }, { 46, 25 }, { 46, 12 }, { 46, 0 }, { 29, 7 },
+    { 30, 20 }, { 31, 33 }, { 17, 42 }, { 15, 30 }, { 13, 17 }, { 0, 28 }, { 3, 41 },
+    { 122, 63 }, { 135, 54 }, { 150, 49 }, { 149, 34 }, { 149, 21 }, { 149, 8 }, { 163, 6 },
+    { 163, 19 }, { 163, 32 }, { 166, 48 }, { 178, 25 }, { 178, 12 }, { 178, 0 }, { 195, 7 },
+    { 194, 20 }, { 193, 33 }, { 206, 42 }, { 209, 30 }, { 211, 17 }, { 224, 28 }, { 221, 41 }
+}, {
+    1, 1, 1, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1,
+    1, 1, 1, 4, 4, 4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1
+} };
+#endif
+
 // #ifdef OLED_ENABLE
 // oled_rotation_t oled_init_kb(oled_rotation_t rotation) {
 //     return OLED_ROTATION_180;
