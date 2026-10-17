@@ -329,6 +329,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 layer_off(_MOUSE);
             }
             return false;
+        case SCROLL:
+            if (record->event.pressed) {
+                layer_on(_SCROLL);
+            } else {
+                layer_off(_SCROLL);
+            }
+            return false;
     };
     return true;
 }
