@@ -40,6 +40,7 @@ enum klor_layers {
     _MOUSE,
     _SPECIAL,
     _ARROWS,
+    _SCROLL,
 };
 
 // ┌───────────────────────────────────────────────────────────┐
@@ -49,6 +50,7 @@ enum klor_layers {
 enum custom_keycodes {
     QWERTY = SAFE_RANGE,
     MOUSE,
+    SCROLL,
 };
 
 
@@ -99,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
              │   F2    │   F3    │   F4    │   F5    │   F6    │ ╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮ │   F7    │   F8    │   F9    │   F10   │   F11   │
    ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ │╰╯╰╯╰╯╰╯╰╯╰╯╰╯╰╯│ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
-   │   F1    │         │         │ MS_BTN3 │ MS_BTN1 │MS_BTN2  ├─╯                ╰─┤ MS_LEFT │ MS_DOWN │ MS_UP   │MS_RIGHT │         │   F12   │
+   │   F1    │ MS_BTN4 │         │ MS_BTN3 │ MS_BTN1 │MS_BTN2  ├─╯                ╰─┤ MS_LEFT │ MS_DOWN │ MS_UP   │MS_RIGHT │ MS_BTN5 │   F12   │
    ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤╭────────╮╭────────╮├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
    │         │         │         │         │         │         ││        ││        ││         │         │         │         │         │         │
    └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┼╰────────╯╰────────╯┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
@@ -109,9 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    [_MOUSE] = LAYOUT(
  //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
               KC_F2  ,  KC_F3  ,  KC_F4  ,  KC_F5  ,  KC_F6  ,                       KC_F7  ,  KC_F8  ,  KC_F9  ,  KC_F10 ,  KC_F11 ,
-    KC_F1  ,  _______,  _______,  MS_BTN3,  MS_BTN1,  MS_BTN2,                       MS_LEFT,  MS_DOWN,  MS_UP  ,  MS_RGHT,  _______,  KC_F12 ,
+    KC_F1  ,  MS_BTN4,  _______,  MS_BTN3,  MS_BTN1,  MS_BTN2,                       MS_LEFT,  MS_DOWN,  MS_UP  ,  MS_RGHT,  MS_BTN5,  KC_F12 ,
     _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,
-                                  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______
+                                  _______,  _______,  _______,  _______,   _______,  _______,  SCROLL ,  _______
  ),
 
  /*
@@ -166,6 +168,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
 
    ┌───────────────────────────────────────────────────────────┐
+   │ s c r o l l    l a y e r                                  │
+   └───────────────────────────────────────────────────────────┘
+             ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
+             │   F2    │   F3    │   F4    │   F5    │   F6    │ ╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮╭╮ │   F7    │   F8    │   F9    │   F10   │   F11   │
+   ┌─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤ │╰╯╰╯╰╯╰╯╰╯╰╯╰╯╰╯│ ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┐
+   │   F1    │         │         │ MS_BTN3 │ MS_BTN1 │MS_BTN2  ├─╯                ╰─┤ MS_LEFT │ MS_DOWN │ MS_UP   │MS_RIGHT │         │   F12   │
+   ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤╭────────╮╭────────╮├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   │         │         │         │         │         │         ││        ││        ││         │         │         │         │         │         │
+   └─────────┴─────────┴─────────┼─────────┼─────────┼─────────┼╰────────╯╰────────╯┼─────────┼─────────┼─────────┼─────────┴─────────┴─────────┘
+                                 │         │         │         │         ││         │         │         │         │
+                                 └─────────┴─────────┴─────────┴─────────┘└─────────┴─────────┴─────────┴─────────┘ */
+
+   [_SCROLL] = LAYOUT(
+ //╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷╷         ╷         ╷         ╷         ╷         ╷         ╷         ╷
+              KC_F2  ,  KC_F3  ,  KC_F4  ,  KC_F5  ,  KC_F6  ,                       KC_F7  ,  KC_F8  ,  KC_F9  ,  KC_F10 ,  KC_F11 ,
+    KC_F1  ,  MS_BTN4,  _______,  MS_BTN3,  MS_BTN1,  MS_BTN2,                       MS_WHLL,  MS_WHLD,  MS_WHLU,  MS_WHLR,  MS_BTN5,  KC_F12 ,
+    _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,
+                                  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______
+ ),
+
+ /*
+   ╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸
+
+   ┌───────────────────────────────────────────────────────────┐
    │ t e m p l a t e   p o l y d a c t y l                     │
    └───────────────────────────────────────────────────────────┘
              ┌─────────┬─────────┬─────────┬─────────┬─────────┐                    ┌─────────┬─────────┬─────────┬─────────┬─────────┐
@@ -198,27 +224,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // layer status ──────────────────────────────────────────┐
 
-int layerstate = 0;
-char layer_state_str[24];
-
-layer_state_t layer_state_set_kb(layer_state_t state) {
-      switch (get_highest_layer(layer_state | default_layer_state)) {
-            case _QWERTY:
-                strcpy ( layer_state_str, "BASE QWERTY");
-                break;
-            case _MOUSE:
-                strcpy ( layer_state_str, "MOUSE");
-                break;
-            case _SPECIAL:
-                strcpy ( layer_state_str, "SPECIAL");
-                break;
-            case _ARROWS:
-                strcpy ( layer_state_str, "ARROWS");
-                break;
-            default:
-                strcpy ( layer_state_str, "XXXXXX");
-        }
-    return state;
+static const char *current_layer_name(void) {
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case _QWERTY:  return "BASE";
+        case _MOUSE:   return "MOUSE";
+        case _SPECIAL: return "SPECIAL";
+        case _ARROWS:  return "ARROWS";
+        case _SCROLL:  return "SCROLL";
+        default:      return "UNKNOWN";
+    }
 }
 
 
@@ -227,14 +241,52 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
 // └───────────────────────────────────────────────────────────┘
 static painter_device_t oled;
 static painter_image_handle_t image;
-// static painter_font_handle_t font;
+static painter_font_handle_t font;
 
-char wpm_str[16];
+static void render_oled_status(void) {
+    static char previous_status[16];
+    char status[16];
+
+    if (!oled || !font) {
+        return;
+    }
+
+    if (is_keyboard_left()) {
+        snprintf(status, sizeof(status), "%s", current_layer_name());
+    } else {
+        snprintf(status, sizeof(status), "WPM %3u", (unsigned int)get_current_wpm());
+    }
+
+    if (strcmp(status, previous_status) == 0) {
+        return;
+    }
+
+    // Clear the whole status line so shorter labels leave no old pixels.
+    qp_rect(oled, 0, 48, 127, 63, 0, 0, 0, true);
+    qp_drawtext(oled, 0, 48, font, status);
+    qp_flush(oled);
+    strcpy(previous_status, status);
+}
+
+void housekeeping_task_user(void) {
+    static uint32_t last_update;
+    if (timer_elapsed32(last_update) >= 100) {
+        last_update = timer_read32();
+        render_oled_status();
+    }
+}
 
 void keyboard_post_init_user(void) {
+#ifdef RGB_MATRIX_ENABLE
+    // Force the LED test state on every boot, regardless of saved RGB settings.
+    rgb_matrix_enable();
+    rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
+    rgb_matrix_sethsv(0, 0, RGB_MATRIX_MAXIMUM_BRIGHTNESS);
+#endif
+
     oled = qp_sh1106_make_i2c_device(128, 64, 0x3C);
     qp_init(oled, QP_ROTATION_180);
-    // qp_load_font_mem(&font);
+    font = qp_load_font_mem(font_font);
     qp_clear(oled);
 
     if (is_keyboard_left()) {
@@ -247,12 +299,7 @@ void keyboard_post_init_user(void) {
         qp_drawimage(oled, 0, 0, image);
     }
 
-    // if (is_keyboard_left()) {
-    //     qp_drawtext(oled, 0, 48, font, layer_state_str);
-    // } else {
-    //     snprintf(wpm_str, sizeof(wpm_str), "WPM %3d", get_current_wpm());
-    //     qp_drawtext(oled, 0, 48, font, wpm_str);
-    // }
+    render_oled_status();
     qp_flush(oled);
 }
 
