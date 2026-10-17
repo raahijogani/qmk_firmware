@@ -263,7 +263,14 @@ static void render_oled_status(void) {
 
     // Clear the whole status line so shorter labels leave no old pixels.
     qp_rect(oled, 0, 48, 127, 63, 0, 0, 0, true);
-    qp_drawtext(oled, 0, 48, font, status);
+    uint16_t x = 0;
+    if (is_keyboard_left()) {
+        int16_t width = qp_textwidth(font, status);
+        if (width > 0 && width < 128) {
+            x = 128 - width;
+        }
+    }
+    qp_drawtext(oled, x, 48, font, status);
     qp_flush(oled);
     strcpy(previous_status, status);
 }
