@@ -23,7 +23,7 @@
         "mousekey": true,
         "oled": true,
         "pointing_device": false,
-        "rgb_matrix": true,
+        "rgb_matrix": false,
         "audio": false
     },
     "matrix_pins": {

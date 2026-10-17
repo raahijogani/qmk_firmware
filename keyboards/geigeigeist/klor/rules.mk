@@ -5,4 +5,4 @@ QUANTUM_PAINTER = yes
 QUANTUM_PAINTER_DRIVERS += sh1106_i2c
 
 # Per-key WS2812 RGB matrix (the KLOR LEDs use data pin D3).
-RGB_MATRIX_ENABLE = yes
+RGB_MATRIX_ENABLE = no
